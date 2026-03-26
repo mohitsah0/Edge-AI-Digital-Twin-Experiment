@@ -3,7 +3,7 @@ This repository contains the complete source code, experimental setup, and repro
 Quick Start
 1. Installation
 # Clone repository
-git clone [https://github.com/yourusername/edge-ai-digital-twin.git](https://github.com/mohitsah0/Edge-AI-Digital-Twin-Experiment/)
+git clone https://github.com/mohitsah0/Edge-AI-Digital-Twin-Experiment/
 cd edge-ai-digital-twin
 
 # Create virtual environment
