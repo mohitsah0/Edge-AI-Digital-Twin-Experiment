@@ -1,28 +1,18 @@
 # Edge-AI Digital Twin for Cyberattack Detection in Renewable Microgrids
 
-## Complete Reproducibility Package
+ Complete Reproducibility Package
 
 This repository contains the complete source code, experimental setup, and reproducibility package for the IEEE Transactions paper:
 
-**"Edge-AI-Driven Digital Twin for Real-Time Cyberattack Detection and Resilient Control in Renewable Microgrids"**
+"Edge-AI-Driven Digital Twin for Real-Time Cyberattack Detection and Resilient Control in Renewable Microgrids"
 
 ---
 
-## Repository Structure
+ Repository Structure
 
 ```
 edge-ai-digital-twin/
 ├── README.md                          # This file
-├── paper/
-│   ├── main.pdf                       # Final IEEE manuscript (PDF)
-│   ├── main.tex                       # LaTeX source
-│   ├── sections/                      # Individual section files
-│   ├── figures/                       # All figures
-│   │   ├── figure1_architecture.png
-│   │   ├── figure2_detection_accuracy.png
-│   │   ├── figure3_latency_distribution.png
-│   │   └── figure4_recovery_timeseries.png
-│   └── references.bib                 # BibTeX references
 ├── src/
 │   ├── models/
 │   │   ├── cnn_1d.py                  # 1D-CNN architecture
@@ -61,9 +51,9 @@ edge-ai-digital-twin/
 
 ---
 
-## Quick Start
+ Quick Start
 
-### 1. Installation
+# 1. Installation
 
 ```bash
 # Clone repository
@@ -78,14 +68,14 @@ source venv/bin/activate  # On Windows: venv\\Scripts\\activate
 pip install -r requirements.txt
 ```
 
-### 2. Generate Dataset
+# 2. Generate Dataset
 
 ```bash
 # Generate 50,000 synthetic microgrid samples (6 classes)
 python data/generate_dataset.py --samples 50000 --output data/microgrid_dataset.npz
 ```
 
-### 3. Train Edge-AI Detection Model
+# 3. Train Edge-AI Detection Model
 
 ```bash
 # Train 1D-CNN model
@@ -97,7 +87,7 @@ python src/models/train.py \\
     --output models/edge_ai_cnn.pth
 ```
 
-### 4. Run Full Experiments
+# 4. Run Full Experiments
 
 ```bash
 # Run all experiments (detection + resilient control)
@@ -106,7 +96,7 @@ python experiments/run_experiments.py \\
     --output results/
 ```
 
-### 5. Reproduce Paper Results
+# 5. Reproduce Paper Results
 
 ```bash
 # Generate all figures and tables from paper
@@ -117,9 +107,9 @@ python experiments/generate_paper_results.py \\
 
 ---
 
-## Experimental Results
+ Experimental Results
 
-### Detection Performance (Table I)
+# Detection Performance (Table I)
 
 | Attack Type       | Accuracy | Precision | Recall | F1-Score |
 |-------------------|----------|-----------|--------|----------|
@@ -129,10 +119,10 @@ python experiments/generate_paper_results.py \\
 | GPS Spoofing      | 96.4%    | 96.1%     | 96.4%  | 96.2%    |
 | Replay            | 96.7%    | 96.4%     | 96.7%  | 96.5%    |
 | Meas. Manip.      | 96.6%    | 96.3%     | 96.6%  | 96.4%    |
-| **Overall**       | **96.8%**| **96.5%** | **96.8%**| **96.6%**|
-| **False Alarm Rate** | **1.8%** | -      | -      | -        |
+| Overall       | 96.8%| 96.5% | 96.8%| 96.6%|
+| False Alarm Rate | 1.8% | -      | -      | -        |
 
-### Latency Performance (Table II)
+# Latency Performance (Table II)
 
 | Metric              | Value        |
 |---------------------|--------------|
@@ -143,7 +133,7 @@ python experiments/generate_paper_results.py \\
 | Model Size          | 1.20 MB      |
 | Training Time       | 45.2 sec     |
 
-### Resilient Control Performance (Table III)
+# Resilient Control Performance (Table III)
 
 | Metric              | Value        |
 |---------------------|--------------|
@@ -154,53 +144,53 @@ python experiments/generate_paper_results.py \\
 
 ---
 
-## Key Features
+ Key Features
 
-### 1. Edge-AI Detection Model
-- **Architecture**: 1D-CNN with 3 convolutional blocks
-- **Input**: 32 features (voltage, frequency, power, current, phase, metadata)
-- **Output**: 6-class classification (Normal + 5 attack types)
-- **Inference Time**: < 0.1 ms per sample
-- **Model Size**: 1.2 MB (deployable on edge devices)
+# 1. Edge-AI Detection Model
+- Architecture: 1D-CNN with 3 convolutional blocks
+- Input: 32 features (voltage, frequency, power, current, phase, metadata)
+- Output: 6-class classification (Normal + 5 attack types)
+- Inference Time: < 0.1 ms per sample
+- Model Size: 1.2 MB (deployable on edge devices)
 
-### 2. Digital Twin Synchronization
-- **Synchronization Frequency**: 10 Hz (100 ms interval)
-- **Physics-Based Model**: Droop control equations
-- **State Estimation**: Kalman filter with attack compensation
-- **Latency**: < 5 ms synchronization overhead
+# 2. Digital Twin Synchronization
+- Synchronization Frequency: 10 Hz (100 ms interval)
+- Physics-Based Model: Droop control equations
+- State Estimation: Kalman filter with attack compensation
+- Latency: < 5 ms synchronization overhead
 
-### 3. Resilient Control Strategy
-- **Detection-Triggered Reconfiguration**: Automatic control mode switching
-- **Recovery Mechanism**: Exponential decay to normal operation
-- **Stability Guarantee**: Lyapunov-based stability analysis
-- **Recovery Time**: < 500 ms
+# 3. Resilient Control Strategy
+- Detection-Triggered Reconfiguration: Automatic control mode switching
+- Recovery Mechanism: Exponential decay to normal operation
+- Stability Guarantee: Lyapunov-based stability analysis
+- Recovery Time: < 500 ms
 
-### 4. Attack Coverage
-- **FDI (False Data Injection)**: Voltage/frequency manipulation
-- **DoS (Denial of Service)**: Communication delay/packet loss
-- **GPS Spoofing**: Timestamp manipulation
-- **Replay Attack**: Repeated old measurements
-- **Measurement Manipulation**: Scaling attacks
-
----
-
-## Hardware Requirements
-
-### Minimum Requirements
-- **CPU**: Intel i5 or equivalent
-- **RAM**: 8 GB
-- **Storage**: 10 GB
-- **GPU**: Not required (CPU-only inference)
-
-### Recommended for Edge Deployment
-- **Edge Device**: NVIDIA Jetson Nano (4GB)
-- **CPU**: Quad-core ARM Cortex-A57
-- **RAM**: 4 GB
-- **Inference Time**: ~12 ms per sample on Jetson Nano
+# 4. Attack Coverage
+- FDI (False Data Injection): Voltage/frequency manipulation
+- DoS (Denial of Service): Communication delay/packet loss
+- GPS Spoofing: Timestamp manipulation
+- Replay Attack: Repeated old measurements
+- Measurement Manipulation: Scaling attacks
 
 ---
 
-## Software Dependencies
+ Hardware Requirements
+
+# Minimum Requirements
+- CPU: Intel i5 or equivalent
+- RAM: 8 GB
+- Storage: 10 GB
+- GPU: Not required (CPU-only inference)
+
+# Recommended for Edge Deployment
+- Edge Device: NVIDIA Jetson Nano (4GB)
+- CPU: Quad-core ARM Cortex-A57
+- RAM: 4 GB
+- Inference Time: ~12 ms per sample on Jetson Nano
+
+---
+
+ Software Dependencies
 
 ```txt
 # Core Dependencies
@@ -222,7 +212,7 @@ dash>=2.0.0
 
 ---
 
-## Citation
+ Citation
 
 If you use this code or dataset in your research, please cite:
 
@@ -241,13 +231,13 @@ If you use this code or dataset in your research, please cite:
 
 ---
 
-## License
+ License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## Contact
+ Contact
 
 For questions or issues, please:
 - Open an issue on GitHub
@@ -255,7 +245,7 @@ For questions or issues, please:
 
 ---
 
-## Acknowledgments
+ Acknowledgments
 
 This work was supported by [Funding Agency] under Grant [Grant Number].
 
@@ -266,6 +256,6 @@ We acknowledge the use of the following datasets and tools:
 
 ---
 
-## References
+ References
 
 See [paper/references.bib](paper/references.bib) for the complete list of 16 IEEE references cited in the manuscript.
